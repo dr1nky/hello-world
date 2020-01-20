@@ -3,6 +3,8 @@ title: "Soup is good food"
 date: "2017-07-27"
 ---
 
+![Bowl of carrot soup](../images/soup.jpg)
+
 We're sorry
 But you're no longer needed
 Or wanted
