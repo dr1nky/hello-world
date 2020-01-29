@@ -43,6 +43,14 @@ export default ({ children }) => {
       >
         About
       </Link>
+      <Link
+        to={`/blog/`}
+        css={css`
+          float: right;
+        `}
+      >
+        Blog
+      </Link>
       {children}
     </div>
   )
