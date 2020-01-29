@@ -41,3 +41,33 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+//////////////////////////////////////////////////////
+////// Contentful Posts
+/////////////////////////////////////////////////////
+exports.createPosts = async ({ graphql, actions }) => {
+  const { createPost } = actions
+  const result = await graphql(`
+    query {
+      allContentfulBlogPost {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  result.data.allContentfulBlogPost.edges.forEach(({ edge }) => {
+    createPost({
+      path: edge.node.slug,
+      component: path.resolve(`./src/templates/contentful-post.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: edge.node.slug,
+      },
+    })
+  })
+}
